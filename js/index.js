@@ -70,8 +70,11 @@ function place(objeto) {
 
 function contentRelatd(videos) {
   let str = "";
-  for (let i = 2; i < 7; i++) {
-    str += `<iframe class="videoDif" src="https://www.youtube.com/embed/${videos.contents[i].video.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  for (let i = 2; i < 10; i++) {
+    if (videos.contents[i].type === "video"){
+      str += `<iframe class="videoDif" src="https://www.youtube.com/embed/${videos.contents[i].video.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
+
   }
   document.getElementById("relvid").innerHTML = str;
 }
