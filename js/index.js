@@ -53,7 +53,7 @@ async function infoId(idVid) {
 function place(objeto) {
   document.getElementById(
     "video"
-  ).innerHTML = `<iframe class="videoDif" src="https://www.youtube.com/embed/${objeto.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  ).innerHTML = `<iframe id="videoDif" src="https://www.youtube.com/embed/${objeto.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
   document.getElementById("tituloVideo").innerHTML = `<h1>${objeto.title}</h1>`;
   document.getElementById(
     "avatarCreat"
@@ -67,13 +67,11 @@ function place(objeto) {
 }
 
 function contentRelatd(videos) {
-  let video1 = videos.contents[3].video.videoId;
-  let video2 = videos.contents[4].video.videoId;
-  let video3 = videos.contents[6].video.videoId;
-  document.getElementById("relvid").innerHTML = `
-	<div class="rltdvideo"><iframe class="videoDif" src="https://www.youtube.com/embed/${video1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-	<div class="rltdvideo"><iframe class="videoDif" src="https://www.youtube.com/embed/${video2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-	<div class="rltdvideo"><iframe class="videoDif" src="https://www.youtube.com/embed/${video3}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+  let str = "";
+  for (let i = 2; i < 7; i++) {
+    str += `<iframe class="videoDif" src="https://www.youtube.com/embed/${videos.contents[i].video.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  }
+  document.getElementById("relvid").innerHTML = str;
 }
 
 async function coments(idVid) {
@@ -98,8 +96,9 @@ async function coments(idVid) {
 
 function creatComents(comentarios) {
   let str = "";
-  for (let i = 0; i < 29; i++) {
+  for (let i = 0; i < 20; i++) {
     str += ` <p><b>${comentarios.comments[i].author.title}</b>:${comentarios.comments[i].content}</p></br> `;
   }
+  console.log(str);
   document.getElementById("comts").innerHTML = str;
 }
