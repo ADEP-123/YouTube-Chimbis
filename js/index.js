@@ -54,7 +54,9 @@ function place(objeto) {
   document.getElementById(
     "video"
   ).innerHTML = `<iframe id="videoDif" src="https://www.youtube.com/embed/${objeto.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-  document.getElementById("tituloVideo").innerHTML = `<h1>${objeto.title}</h1>`;
+  document.getElementById(
+    "tituloVideo"
+  ).innerHTML = `<h1>${objeto.title}</h1> <hr>`;
   document.getElementById(
     "avatarCreat"
   ).innerHTML = `<img id="avtCreat" src="${objeto.author.avatar[2].url}">`;
